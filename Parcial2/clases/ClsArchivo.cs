@@ -27,6 +27,12 @@ namespace Parcial2.clases
             }
             return this.ruta;
         }
+        public void prueba()
+        {
+
+        }
+
+
         public string[] obtenerFilas()
         {
             string[] filas = File.ReadAllLines(this.ruta, Encoding.Default);
