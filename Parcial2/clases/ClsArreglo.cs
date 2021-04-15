@@ -26,24 +26,21 @@ namespace Parcial2.clases
             }
             return arregloDosDimensiones;
         }
-        
-        public string[] OrdenarString(string[,] arregloDosDimensiones, int columna)
+        public string[] OrdenarString(string[,] matriz, int columna)
         {
+            string[] arreglo = new string[matriz.GetLength(0) - 1];
 
-
-            string[] arreglo = new string[arregloDosDimensiones.GetLength(0) - 1]; 
-
-            for(int i=0; i < arreglo.Length; i++)
+            for (int i = 0; i < arreglo.Length; i++)
             {
-                arreglo[i] = arregloDosDimensiones[i + 1, columna];
+                arreglo[i] = matriz[i + 1, columna];
             }
-
+            
             string[] ArregloTemporal = arreglo;
             string datosTemporal;
 
-            for (int i = 0; i < arreglo.GetLength(0); i++)
+            for (int i = 0; i < arreglo.Length; i++)
             {
-                for (int j = i + 1; j < arreglo.GetLength(0); j++)
+                for (int j = i + 1; j < arreglo.Length; j++)
                 {
                     /**
                      *  COMO NO ES UN NUMERO SE UTILIZA EL COMPARE.TO 

@@ -40,9 +40,12 @@ namespace Parcial2
              */
             ClsArreglo arreglo = new ClsArreglo();
             string[,] arregloDosDimensiones= arreglo.DosDimensiones(filas,6);
-            for(int i = 0; i < arregloDosDimensiones.GetLength(0); i++)
+            string[] nombres = arreglo.OrdenarString(arregloDosDimensiones, 1);
+
+
+            for(int i = 0; i < nombres.Length; i++)
             {
-                this.listP1.Items.Add(arregloDosDimensiones[i, 1]);
+                this.listP1.Items.Add(nombres[i]);
             }
 
         }

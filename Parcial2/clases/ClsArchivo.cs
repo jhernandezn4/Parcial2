@@ -29,7 +29,7 @@ namespace Parcial2.clases
         }
         public string[] obtenerFilas()
         {
-            string[] filas = File.ReadAllLines(this.ruta, Encoding.Default);
+            string[] filas = File.ReadAllLines(this.ruta, Encoding.ASCII);
             this.filas = filas;
             return filas;
         }
