@@ -11,28 +11,38 @@ namespace Parcial2.clases
 
         public string[,] DosDimensiones(string[] arreglo, int numeroColumnas)
         {
-            string[,] arregloDosDimensiones = new string[arreglo.Length, numeroColumnas];
+            string[,] matriz = new string[arreglo.Length-1, numeroColumnas];
             int contador = 0;
             foreach (string fila in arreglo)
             {
-                string[] columnas = fila.Split(',');
-                arregloDosDimensiones[contador, 0] = columnas[0]; //Correlativo
-                arregloDosDimensiones[contador, 1] = columnas[1]; //Nombre
-                arregloDosDimensiones[contador, 2] = columnas[2]; //Parcial Uno
-                arregloDosDimensiones[contador, 3] = columnas[3]; //Parcial Dos
-                arregloDosDimensiones[contador, 4] = columnas[4]; //Parical Tres
-                arregloDosDimensiones[contador, 5] = columnas[5]; //Seccion
+                if (contador > 0)
+                {
+                    string[] columnas = fila.Split(',');
+                    matriz[contador-1, 0] = columnas[0]; //Correlativo
+                    matriz[contador-1, 1] = columnas[1]; //Nombre
+                    matriz[contador-1, 2] = columnas[2]; //Parcial Uno
+                    matriz[contador-1, 3] = columnas[3]; //Parcial Dos
+                    matriz[contador-1, 4] = columnas[4]; //Parical Tres
+                    matriz[contador-1, 5] = columnas[5]; //Seccion
+                    /**
+                     * SE CALCULA EL PROMEDI POR ALUMNO
+                     */
+                    int suma = Convert.ToInt16(columnas[2]) + Convert.ToInt16(columnas[3]) + Convert.ToInt16(columnas[4]);
+                    int promedio = suma / 3;
+
+                    matriz[contador-1, 6] = Convert.ToString(promedio); //Parical Tres
+                }
                 contador++;
             }
-            return arregloDosDimensiones;
+            return matriz;
         }
         public string[] OrdenarString(string[,] matriz, int columna)
         {
-            string[] arreglo = new string[matriz.GetLength(0) - 1];
+            string[] arreglo = new string[matriz.GetLength(0)-1];
 
             for (int i = 0; i < arreglo.Length; i++)
             {
-                arreglo[i] = matriz[i + 1, columna];
+                arreglo[i] = matriz[i, columna];
             }
             
             string[] ArregloTemporal = arreglo;
@@ -62,10 +72,10 @@ namespace Parcial2.clases
             /**
              * SE CREA EL ARREGLO NUEVO
              */
-            int[] arreglo = new int[matriz.GetLength(0) - 1];
+            int[] arreglo = new int[matriz.GetLength(0)-1];
             for (int i = 0; i < arreglo.Length; i++)
             {
-                arreglo[i] = Convert.ToInt32(matriz[i + 1, columna]);
+                arreglo[i] = Convert.ToInt32(matriz[i , columna]);
             }
 
             /**
@@ -91,5 +101,8 @@ namespace Parcial2.clases
             }
             return arreglo;
         }
+        
+       
+
     }
 }
