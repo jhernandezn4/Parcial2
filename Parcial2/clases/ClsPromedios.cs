@@ -19,6 +19,7 @@ namespace Parcial2.clases
                 }
             }
             string[,] datos = new string[alumnosEnSeccion, matriz.GetLength(1)];
+            
             int contadorNuevaMatriz = 0;
             for (int i = 0; i < matriz.GetLength(0); i++)
             {
@@ -41,14 +42,16 @@ namespace Parcial2.clases
         public int promedios_general_seccion(string[,] matriz, int columna_parcial, string seccion)
         {
             int suma = 0;
+            int contador = 0;
             for(int i=0; i < matriz.GetLength(0); i++)
             {
                 if (matriz[i, 5] == seccion )
                 {
                     suma = suma + Convert.ToInt32(matriz[i, columna_parcial]);
+                    contador++;
                 }
             }
-            int promedio = suma / matriz.GetLength(0);
+            int promedio = suma / contador;
             return promedio;
         }
 
@@ -74,16 +77,16 @@ namespace Parcial2.clases
              * SE CREA EL ARREGLO NUEVO
              */
             int acumulador = 0;
+            int contador = 0;
             for (int i = 0; i < matriz.GetLength(0); i++)
             {
                 if (matriz[i, 5] == seccion)
                 {
                     acumulador = acumulador + Convert.ToInt32(matriz[i, columna_parcial]);
+                    contador++;
                 }
             }
-
-            int promedio = acumulador / matriz.GetLength(0);
-
+            int promedio = acumulador / contador;
             return promedio;
         }
 
